@@ -1,0 +1,8 @@
+var items = menuButton.getItems();
+for (var item : items)
+{
+    item.setOnAction((e) ->
+    {
+        menuButtonSelectedIndex = ((MenuButton)e.getSource()).getId();
+    });
+}
