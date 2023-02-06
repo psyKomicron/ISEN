@@ -16,7 +16,6 @@ public class NewView
 {
     private BandColor lastUsedColor = BandColor.Black;
     private final ArrayList<Band> bands = new ArrayList<>();
-    private Boolean showedAutoUpdateAlert = false;
     private BandColor toleranceBandColor = BandColor.Black;
     private BandColor multiplierBandColor = BandColor.Black;
     @FXML
@@ -225,24 +224,6 @@ public class NewView
         bandHBox.getChildren().clear();
         bands.clear();
 
-        if (autoUpdateToggleButton.isSelected())
-        {
-            UpdateResult();
-        }
-    }
-
-    @FXML
-    public void MultiplierComboBox_OnAction()
-    {
-        if (autoUpdateToggleButton.isSelected())
-        {
-            UpdateResult();
-        }
-    }
-
-    @FXML
-    public void ToleranceComboBox_OnAction()
-    {
         if (autoUpdateToggleButton.isSelected())
         {
             UpdateResult();

@@ -2,6 +2,9 @@ package com.psy.rockfx.calculator;
 
 import java.util.ArrayList;
 
+/**
+ * Calculates the value of a resistance. Use Calculate.
+ */
 public class ResistorValueCalculator
 {
     private ResistorValueCalculator()
