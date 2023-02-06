@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="480.0" prefWidth="750.0" style="-fx-background-color: #29323d;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.psy.rockfx.NewView">
+   <content>
+      <GridPane hgap="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="500.0" style="-fx-background-color: #29323d;" vgap="10.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" percentHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane GridPane.vgrow="NEVER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" percentWidth="15.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ButtonBar fx:id="bandControlButtonBar" nodeOrientation="RIGHT_TO_LEFT" prefHeight="35.0" prefWidth="200.0">
+                    <buttons>
+                      <Button accessibleText="Add a band" mnemonicParsing="false" onAction="#AddBandButton_Action" text="+">
+                         <tooltip>
+                            <Tooltip text="Add a band"/>
+                         </tooltip>
+                      </Button>
+                        <Button fx:id="removeBandButton" layoutX="375.0" layoutY="19.0" mnemonicParsing="false" onAction="#RemoveBandButton_Action" text="-">
+                           <tooltip>
+                              <Tooltip text="Remove the rightmost band"/>
+                           </tooltip>
+                        </Button>
+                        <Button layoutX="375.0" layoutY="19.0" mnemonicParsing="false" onAction="#ClearBandsButton_Action" text="Clear">
+                           <tooltip>
+                              <Tooltip text="Remove all bands"/>
+                           </tooltip>
+                        </Button>
+                        <ToggleButton fx:id="autoUpdateToggleButton" mnemonicParsing="false" onAction="#AutoUpdateToggleButton_OnAction" text="Auto update">
+                           <tooltip>
+                              <Tooltip text="If activated, the result will be calculated in real time"/>
+                           </tooltip>
+                        </ToggleButton>
+                    </buttons>
+                  </ButtonBar>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#HelpButton_OnAction" text="Help" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <padding>
+                        <Insets bottom="4.0" left="15.0" right="15.0" top="4.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </GridPane>
+            <GridPane hgap="3.0" prefHeight="321.0" prefWidth="626.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+                   <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <GridPane hgap="7.0" GridPane.columnSpan="2147483647">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="70.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="15.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox fx:id="bandHBox" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="hbox">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="hbox" GridPane.columnIndex="1">
+                           <children>
+                              <Button fx:id="multiplierButton" alignment="CENTER" maxHeight="200.0" maxWidth="-Infinity" mnemonicParsing="false" onAction="#MultiplierButton_OnAction" styleClass="band-button">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" styleClass="hbox" GridPane.columnIndex="2">
+                           <children>
+                              <Button fx:id="toleranceButton" maxHeight="200.0" mnemonicParsing="false" onAction="#ToleranceButton_OnAction" styleClass="band-button" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="bandHBoxTooltip" onMouseClicked="#AddBandButton_Action" opacity="0.7" text="Add bands with the + button" textFill="WHITE" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Label>
+                        <Label text="Multiplier" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets top="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Tolerance" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                           <GridPane.margin>
+                              <Insets top="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+            <Label fx:id="resultLabel" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" textAlignment="CENTER" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="72.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="-7.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+      </GridPane>
+   </content>
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</ScrollPane>

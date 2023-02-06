@@ -1,0 +1,11 @@
+.hbox, .label {
+    -fx-background-color:  #667e99;
+    -fx-background-radius: 5px;
+}
+
+.band-button {
+    -fx-border-color: #0a0d0f;
+    -fx-border-width: 1;
+    -fx-border-radius: 3px;
+    -fx-border-insets: -1;
+}
